@@ -4,7 +4,7 @@
 
 ## En cours
 
-- Story 0.1 — Workflow projet et documentation — PR à ouvrir, recette à valider.
+_Rien en cours._
 
 ## Sprint actif — CRUD et carte
 
@@ -22,4 +22,6 @@
 
 ## Mergé sur develop ✅
 
-_Aucune story pour le moment._
+| Story | PR | Date |
+|---|---|---|
+| Story 0.1 — Workflow projet et documentation | [root PR #1](https://github.com/AlexandreMoreau2002/quest/pull/1), API PR #1, web PR #1 | 2026-07-21 |
