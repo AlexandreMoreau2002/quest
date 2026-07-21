@@ -1,0 +1,27 @@
+# generated: 2026-07-21
+# project: quest
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+generated: 2026-07-21
+project: quest
+project_key: QUEST
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  epic-0: in-progress
+  0-1-project-workflow-and-documentation: review
+  epic-0-retrospective: optional
+
+  epic-1: ready-for-dev
+  1-1-postgresql-prisma-seed-objectifs: ready-for-dev
+  1-2-crud-nestjs-quests-steps: backlog
+  1-3-carte-nextjs-consomme-api: backlog
+  1-4-crud-depuis-carte: backlog
+  epic-1-retrospective: optional
+
+  epic-2: backlog
+  2-1-authentification-et-espaces-utilisateur: backlog
+  2-2-crosslinks-entre-projets: backlog
+  epic-2-retrospective: optional

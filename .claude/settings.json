@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(npm run:*)",
+      "Bash(npx prisma:*)",
+      "Bash(docker compose:*)"
+    ]
+  }
+}
