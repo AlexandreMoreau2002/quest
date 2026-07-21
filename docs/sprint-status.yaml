@@ -1,0 +1,35 @@
+project: quest
+sprint: 2026-07-21-crud-map
+goal: "Tester ce soir un CRUD persistant d’objectifs et d’étapes sur la carte interactive."
+updated_at: "2026-07-21"
+source_of_truth:
+  - docs/superpowers/specs/2026-07-21-full-stack-crud-map-sprint-design.md
+  - docs/superpowers/plans/2026-07-21-frontend-mvp-vertical-slice.md
+stories:
+  - id: QST-001
+    title: "Infrastructure PostgreSQL, Prisma et seed"
+    status: ready_for_plan
+    owner: api
+    depends_on: []
+  - id: QST-002
+    title: "CRUD NestJS pour objectifs et étapes"
+    status: blocked_by_QST-001
+    owner: api
+    depends_on: [QST-001]
+  - id: QST-003
+    title: "Carte Next.js reliée à l’API"
+    status: blocked_by_QST-002
+    owner: web
+    depends_on: [QST-002]
+  - id: QST-004
+    title: "Création, édition et suppression depuis la carte"
+    status: blocked_by_QST-003
+    owner: web
+    depends_on: [QST-003]
+quality_gates:
+  api_tests: pending
+  web_tests: pending
+  api_lint: pending
+  web_lint: pending
+  api_build: pending
+  web_build: pending
