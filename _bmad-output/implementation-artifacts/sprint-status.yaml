@@ -14,14 +14,23 @@ development_status:
   0-1-project-workflow-and-documentation: done
   epic-0-retrospective: optional
 
-  epic-1: ready-for-dev
-  1-1-postgresql-prisma-seed-objectifs: ready-for-dev
-  1-2-crud-nestjs-quests-steps: backlog
-  1-3-carte-nextjs-consomme-api: backlog
+  epic-1: in-progress
+  1-1-postgresql-prisma-seed-objectifs: done
+  1-2-crud-nestjs-quests-steps: done
+  1-3-carte-nextjs-consomme-api: done
+  design-system-phase-a-tokens-anatomie: done
+  design-system-phase-b-ancrages-drag: done
+  design-system-phase-c-themes-mobile: done
   1-4-crud-depuis-carte: backlog
   epic-1-retrospective: optional
 
   epic-2: backlog
+  deploy une production 100% f2p: backlog
+
+  epic-?: backlog
+  i18n: done
+
+  epic-?: backlog
   2-1-authentification-et-espaces-utilisateur: backlog
   2-2-crosslinks-entre-projets: backlog
   epic-2-retrospective: optional
