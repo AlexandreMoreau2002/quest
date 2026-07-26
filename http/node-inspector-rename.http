@@ -1,0 +1,13 @@
+@baseUrl = http://localhost:3001
+@nodeId = 00000000-0000-0000-0000-000000000001
+@updatedTitle = Titre renommé depuis l’inspector
+
+###
+### Renommer un node
+###
+PATCH {{baseUrl}}/nodes/{{nodeId}}
+Content-Type: application/json
+
+{
+  "title": "{{updatedTitle}}"
+}
