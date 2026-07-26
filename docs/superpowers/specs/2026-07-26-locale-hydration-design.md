@@ -16,12 +16,11 @@ sous-arbre côté client.
 
 ## Design retenu
 
-`useLocale` utilise `useSyncExternalStore` avec un snapshot serveur et un
-snapshot client initial identiques (`fr`). Après l’hydratation, le snapshot
-client lit la préférence persistée et notifie le composant, ce qui applique
-`en` sans divergence pendant l’hydratation. Le changement explicite de langue
-continue d’écrire dans `localStorage`, de changer i18next et de notifier les
-abonnés.
+`useLocale` initialise son état React à `fr`, valeur déterministe aussi bien
+sur le serveur que lors du premier rendu client. Un `useEffect` lit ensuite la
+préférence persistée et met à jour l’état après l’hydratation. Le changement
+explicite de langue continue d’écrire dans `localStorage`, de changer i18next
+et de notifier les abonnés.
 
 Le comportement attendu est donc :
 
@@ -38,6 +37,7 @@ qui applique déjà ce modèle, sert de référence locale.
 
 - conserver les tests existants du hook (`fr` par défaut, persistance, valeur
   corrompue);
-- ajouter un test qui vérifie que le snapshot serveur reste `fr` alors qu’une
-  préférence `en` est disponible côté navigateur;
+- ajouter un test qui vérifie que le premier rendu client reste `fr` alors
+  qu’une préférence `en` est disponible côté navigateur, puis qu’`en` est
+  restauré après le montage;
 - exécuter les tests web, ESLint et le build Next.js.

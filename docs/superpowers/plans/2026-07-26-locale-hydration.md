@@ -4,7 +4,7 @@
 
 **Goal:** Prevent the Next.js hydration mismatch caused by reading the persisted locale before the first client render.
 
-**Architecture:** Keep `useLocale` on `useSyncExternalStore`, but provide the same French snapshot to SSR and the first client render. Let the browser snapshot switch to the validated `localStorage` value after hydration, then keep the existing explicit locale mutation flow.
+**Architecture:** Initialize `useLocale` with the deterministic French locale on both SSR and the first client render. Read the validated `localStorage` value in `useEffect` after mounting, then keep the existing explicit locale mutation and listener flow.
 
 **Tech Stack:** Next.js 16, React 19, TypeScript, i18next, Vitest, Testing Library.
 
@@ -18,7 +18,7 @@
 
 ---
 
-### Task 1: Make locale snapshots hydration-safe
+### Task 1: Make locale state hydration-safe
 
 **Files:**
 - Modify: `web/src/hooks/use-locale.ts`
@@ -26,20 +26,19 @@
 
 **Interfaces:**
 - Consumes: `SupportedLocale`, `DEFAULT_LOCALE`, and the existing locale store API.
-- Produces: `useLocale()` with the same `{ locale, setLocale }` return shape; SSR and first client snapshot both return `DEFAULT_LOCALE`.
+- Produces: `useLocale()` with the same `{ locale, setLocale }` return shape; SSR and first client render both return `DEFAULT_LOCALE`.
 
 - [ ] **Step 1: Write the failing regression test**
 
-Add a test that stores `en`, renders the hook with a server snapshot override, and asserts the server snapshot is `fr` while the hydrated client eventually reflects `en`. Keep the existing persistence and invalid-value tests unchanged.
+Add a test that stores `en`, renders the hook, and asserts the first client value is `fr` while the mounted hook eventually reflects `en`. Keep the existing persistence and invalid-value tests unchanged.
 
 ```typescript
-it('keeps the server snapshot in French when English is persisted', () => {
+it('starts in French and restores English after mount', async () => {
   localStorage.setItem('quest-locale', 'en');
-  const { result } = renderHook(() => useLocale(), {
-    serverHydration: true,
-  });
+  const { result } = renderHook(() => useLocale());
 
   expect(result.current.locale).toBe('fr');
+  await waitFor(() => expect(result.current.locale).toBe('en'));
 });
 ```
 
@@ -49,21 +48,24 @@ If the installed Testing Library version cannot expose a server snapshot through
 
 Run: `npm test -- --run web/src/hooks/use-locale.test.ts`
 
-Expected: the new regression test fails because `readStoredLocale()` currently returns `en` on the client render.
+Expected: the new regression test fails because the current render-time `readStoredLocale()` returns `en` immediately on the client.
 
-- [ ] **Step 3: Implement the minimal snapshot change**
+- [ ] **Step 3: Implement the minimal hydration-safe state change**
 
-Split the current browser read into a client snapshot function and make the `useSyncExternalStore` third argument the server snapshot already used by the theme hook. The browser snapshot must continue validating `localStorage` and the setter must continue notifying listeners.
+Replace the render-time `localStorage` read with a `useState(DEFAULT_LOCALE)` initializer and a `useEffect` that reads the validated stored value after mount. Keep the module listener set so explicit locale changes update every mounted consumer; remove the old `useSyncExternalStore` dependency from this hook.
 
 ```typescript
-function getServerLocale(): SupportedLocale {
-  return DEFAULT_LOCALE;
-}
+const [locale, setLocaleState] = useState<SupportedLocale>(DEFAULT_LOCALE);
 
-const locale = useSyncExternalStore(subscribe, readStoredLocale, getServerLocale);
+useEffect(() => {
+  const syncLocale = () => setLocaleState(readStoredLocale());
+  syncLocale();
+  listeners.add(syncLocale);
+  return () => listeners.delete(syncLocale);
+}, []);
 ```
 
-If React requires a stable first client snapshot for hydration in the current implementation, introduce a `hasHydrated` store flag and set it from the subscription callback, while keeping the first client value equal to `DEFAULT_LOCALE`; do not read `window` from render-time branching outside the store contract.
+Do not read `window` or `localStorage` from the render path. Keep the first client state equal to `DEFAULT_LOCALE` and perform all browser restoration from the effect.
 
 - [ ] **Step 4: Run focused tests and type/lint checks**
 

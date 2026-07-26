@@ -33,21 +33,21 @@ Le hook `useLocale` garde la même idée :
 
 - le serveur rend toujours la valeur par défaut `fr` ;
 - le premier rendu client utilise aussi `fr` ;
-- après l’hydratation, le navigateur peut relire `localStorage` et passer à `en` si c’est la préférence enregistrée ;
+- après l’hydratation, un effet React relit `localStorage` et peut passer à `en` si c’est la préférence enregistrée ;
 - quand l’utilisateur change la langue, la valeur est réécrite dans `localStorage` et l’interface se met à jour.
 
 ```text
 1. SSR
-   serveur -> snapshot serveur = fr
+   serveur -> état initial = fr
    HTML envoyé = FR
 
 2. Hydratation
-   premier rendu client -> snapshot serveur = fr
+   premier rendu client -> état initial React = fr
    React retrouve exactement le même HTML
    pas de warning
 
 3. Après hydratation
-   navigateur -> lit `localStorage.quest-locale`
+   `useEffect` -> lit `localStorage.quest-locale`
    si la valeur est `en`, l’UI bascule en EN
 
 4. Changement manuel
@@ -62,14 +62,14 @@ Le hook `useLocale` garde la même idée :
 ```text
                 ┌──────────────────────────┐
                 │         Serveur          │
-                │  snapshot = fr           │
+                │  état initial = fr       │
                 │  HTML = français         │
                 └─────────────┬────────────┘
                               │
                               ▼
                 ┌──────────────────────────┐
                 │     1er rendu client     │
-                │  snapshot = fr           │
+                │  état initial = fr       │
                 │  hydratation OK          │
                 └─────────────┬────────────┘
                               │
@@ -105,4 +105,3 @@ La préférence enregistrée dans `localStorage` peut ensuite reprendre la main,
 - pas de modification backend ;
 - pas de changement des dictionnaires FR / EN ;
 - pas de changement de l’API publique du provider i18n.
-
