@@ -29,11 +29,11 @@ development_status:
   design-system-phase-b-ancrages-drag: done # interaction remplacée par le drag & connect natif, cf. 1-6
   design-system-phase-c-themes-mobile: done
   i18n: done
-  1-5-api-graphe-unifie-node-edge: ready-for-dev
-  1-6-canvas-space-unifie-drag-connect: backlog
+  1-5-api-graphe-unifie-node-edge: done
+  1-6-canvas-space-unifie-drag-connect: done
   # 1.7 : serveur MCP dev-only (tools Projet/Objectif/Étape via l'API NestJS).
   # Dépend de 1.5 (API Node/Edge) — voir TODO.md.
-  1-7-serveur-mcp-dev: backlog
+  1-7-serveur-mcp-dev: ready-for-dev
   epic-1-retrospective: optional
 
   # epic-2 : mise en production, phase suivante une fois le graphe unifié livré.
