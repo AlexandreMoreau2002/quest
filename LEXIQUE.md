@@ -15,6 +15,7 @@
 | **Validation** | Métier | Action manuelle qui bascule un Objectif en statut "complété", indépendamment de son pourcentage de progression (même à 100%, il faut valider explicitement). |
 | **Card** | Front | La représentation visuelle d'un Nœud sur le Space — l'élément que l'utilisateur voit, déplace et clique. |
 | **HUD** | Front | L'ensemble des composants d'interface qui se superposent au Space (barres d'outils, panneaux latéraux, modales, recherche...). Distinct du Space (le fond/la carte qui bouge) et des Cards (les éléments posés dessus). |
+| **Projet** | Métier | Un Objectif racine et l'ensemble des Étapes qui remontent jusqu'à lui (mêmes Nœuds que ceux utilisés pour calculer sa progression). Ce n'est pas une entité stockée à part : c'est une vue calculée à partir d'un Objectif + ses Ancêtres. Une Étape peut appartenir à plusieurs Projets si elle alimente plusieurs Objectifs. |
 
 ## Décisions structurantes liées au lexique
 
@@ -22,4 +23,4 @@
 - La progression d'un Objectif = (Nœuds ancêtres complétés) / (total Nœuds ancêtres), calculée automatiquement — pas de pondération manuelle pour le MVP.
 - Un Objectif peut atteindre 100% automatiquement mais reste au statut précédent tant qu'il n'est pas validé manuellement.
 
-*Dernière mise à jour : 2026-07-26 — en cours de stabilisation pendant le brainstorming architecture graphe.*
+*Dernière mise à jour : 2026-07-26 — ajout du terme Projet pendant le brainstorming serveur MCP.*

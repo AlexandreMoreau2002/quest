@@ -11,8 +11,9 @@
 
 1. [ ] Story 1.5 — API du graphe unifié Node/Edge.
 2. [ ] Story 1.6 — Canvas Space unifié (drag & drop libre, connexions natives, HUD).
-3. [ ] Epic 2 — Mise en production (déploiement 100% F2P), une fois le graphe unifié livré.
-4. [ ] Epic 3 — Authentification et espaces utilisateur (les crosslinks entre projets sont déjà couverts nativement par le DAG, plus besoin de story dédiée).
+3. [ ] Story 1.7 — Serveur MCP dev (tools Projet/Objectif/Étape via l'API NestJS), dépend de 1.5.
+4. [ ] Epic 2 — Mise en production (déploiement 100% F2P), une fois le graphe unifié livré.
+5. [ ] Epic 3 — Authentification et espaces utilisateur (les crosslinks entre projets sont déjà couverts nativement par le DAG, plus besoin de story dédiée).
 
 ## Sprint actif — Graphe unifié Space/Node/Edge
 
@@ -25,6 +26,7 @@
 | i18n | react-i18next, FR par défaut, toggle FR/EN fonctionnel | `done` |
 | 1.5 | API du graphe unifié (Node/Edge, progression, validation) | `ready-for-dev` |
 | 1.6 | Canvas Space unifié (drag & drop, connexions, HUD) | `backlog` — dépend de 1.5 |
+| 1.7 | Serveur MCP dev (tools Projet/Objectif/Étape via l'API) | `backlog` — dépend de 1.5 |
 
 ## Dette technique
 
