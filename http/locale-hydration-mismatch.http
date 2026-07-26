@@ -1,0 +1,14 @@
+@webBaseUrl = http://localhost:3000
+@storageKey = quest-locale
+@localeFr = fr
+@localeEn = en
+
+# Fix frontend-only.
+# There is no locale endpoint to call: the language lives in browser localStorage
+# under `quest-locale`, and the hydration fix is entirely in the web app.
+
+### Manual reminder for the browser
+# In DevTools Console:
+# localStorage.setItem('{{storageKey}}', '{{localeEn}}')
+# localStorage.setItem('{{storageKey}}', '{{localeFr}}')
+# localStorage.removeItem('{{storageKey}}')
