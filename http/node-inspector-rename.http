@@ -1,6 +1,37 @@
 @baseUrl = http://localhost:3001
+@spaceId = 00000000-0000-0000-0000-000000000000
 @nodeId = 00000000-0000-0000-0000-000000000001
+@sourceNodeId = 00000000-0000-0000-0000-000000000002
+@targetNodeId = 00000000-0000-0000-0000-000000000003
+@nodeTitle = Nouveau node depuis REST Client
+@nodeDescription = Créé depuis le fichier HTTP de l’inspector
+@nodeType = ETAPE
+@nodeX = 480
+@nodeY = 320
 @updatedTitle = Titre renommé depuis l’inspector
+
+### Créer un node
+###
+POST {{baseUrl}}/spaces/{{spaceId}}/nodes
+Content-Type: application/json
+
+{
+  "type": "{{nodeType}}",
+  "title": "{{nodeTitle}}",
+  "description": "{{nodeDescription}}",
+  "positionX": {{nodeX}},
+  "positionY": {{nodeY}}
+}
+
+### Créer une edge
+###
+POST {{baseUrl}}/spaces/{{spaceId}}/edges
+Content-Type: application/json
+
+{
+  "sourceNodeId": "{{sourceNodeId}}",
+  "targetNodeId": "{{targetNodeId}}"
+}
 
 ###
 ### Renommer un node

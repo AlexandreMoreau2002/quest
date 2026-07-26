@@ -123,4 +123,3 @@ Attendu :
 - [ ] le mode local reste fonctionnel sans API ;
 - [ ] l’inspector mobile s’affiche correctement ;
 - [ ] une erreur de PATCH déclenche un rollback ciblé.
-

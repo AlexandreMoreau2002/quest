@@ -133,4 +133,3 @@ Cette documentation décrit le comportement observé dans :
 - `web/src/i18n/locales/en.json`
 - `api/src/nodes/nodes.controller.ts`
 - `api/src/nodes/nodes.service.ts`
-
