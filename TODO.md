@@ -4,15 +4,16 @@
 
 ## En cours
 
-- Refonte du modèle métier : Space/Quest/Step (arbres isolés) → graphe unifié Space/Node/Edge (un Node Objectif ou Étape, liens multi-parents). Voir [spec](docs/superpowers/specs/2026-07-26-space-graphe-unifie-design.md), [lexique](LEXIQUE.md) et [plan](docs/superpowers/plans/2026-07-26-space-graphe-unifie.md).
-- Story 1.5 — API du graphe unifié (Node/Edge, progression, validation) — prochaine story prête.
+- Story 1.7 — Serveur MCP dev (tools Projet/Objectif/Étape via l'API NestJS), dépend de 1.5.
+- Graphe unifié Space/Node/Edge ✅ livré (stories 1.5 et 1.6 complétées). Recette manuelle : [story-graphe-unifie-space-node-edge.md](docs/manual-tests/story-graphe-unifie-space-node-edge.md).
 
 ## Prochaines priorités
 
-1. [ ] Story 1.5 — API du graphe unifié Node/Edge.
-2. [ ] Story 1.6 — Canvas Space unifié (drag & drop libre, connexions natives, HUD).
-3. [ ] Epic 2 — Mise en production (déploiement 100% F2P), une fois le graphe unifié livré.
-4. [ ] Epic 3 — Authentification et espaces utilisateur (les crosslinks entre projets sont déjà couverts nativement par le DAG, plus besoin de story dédiée).
+1. [x] Story 1.5 — API du graphe unifié Node/Edge. ✅
+2. [x] Story 1.6 — Canvas Space unifié (drag & drop libre, connexions natives, HUD). ✅
+3. [ ] Story 1.7 — Serveur MCP dev (tools Projet/Objectif/Étape via l'API NestJS), dépend de 1.5.
+4. [ ] Epic 2 — Mise en production (déploiement 100% F2P), une fois le graphe unifié livré.
+5. [ ] Epic 3 — Authentification et espaces utilisateur (les crosslinks entre projets sont déjà couverts nativement par le DAG, plus besoin de story dédiée).
 
 ## Sprint actif — Graphe unifié Space/Node/Edge
 
@@ -23,8 +24,9 @@
 | 1.3 | Carte Next.js reliée à l’API | `done` — modèle remplacé par 1.6 |
 | Design system A/B/C | Tokens, ancrages/drag-to-create, thèmes + mobile | `done` |
 | i18n | react-i18next, FR par défaut, toggle FR/EN fonctionnel | `done` |
-| 1.5 | API du graphe unifié (Node/Edge, progression, validation) | `ready-for-dev` |
-| 1.6 | Canvas Space unifié (drag & drop, connexions, HUD) | `backlog` — dépend de 1.5 |
+| 1.5 | API du graphe unifié (Node/Edge, progression, validation) | `done` |
+| 1.6 | Canvas Space unifié (drag & drop, connexions, HUD) | `done` |
+| 1.7 | Serveur MCP dev (tools Projet/Objectif/Étape via l'API) | `ready-for-dev` — dépend de 1.5 |
 
 ## Dette technique
 

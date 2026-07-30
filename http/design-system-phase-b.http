@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:3001
+@stepId = 5cee75ab-cf84-43dc-a015-63519d2c35ec
+@otherStepId = 0e1ed3bc-4c10-4ba7-8ebf-126377085d54
+@crossQuestStepId = 8e6b065b-d61c-41b3-998a-8aa6e0789914
+
+### Valid re-parenting: same quest, different step as new parent
+# Expect: 200 OK
+PATCH {{baseUrl}}/steps/{{stepId}}
+Content-Type: application/json
+
+{
+  "parentStepId": "{{otherStepId}}"
+}
+
+### Invalid re-parenting: parentStepId belongs to a different quest
+# Expect: 409 Conflict — "The parent step must belong to the same quest."
+PATCH {{baseUrl}}/steps/{{stepId}}
+Content-Type: application/json
+
+{
+  "parentStepId": "{{crossQuestStepId}}"
+}
+
+### Invalid re-parenting: parentStepId equal to the step itself
+# Expect: 409 Conflict — "A step cannot be its own parent."
+PATCH {{baseUrl}}/steps/{{stepId}}
+Content-Type: application/json
+
+{
+  "parentStepId": "{{stepId}}"
+}
