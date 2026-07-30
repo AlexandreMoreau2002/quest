@@ -1,0 +1,6 @@
+### Local connection pill
+# Ce changement est exclusivement visuel.
+# Il conditionne l'affichage du pill selon window.location.hostname.
+# Il n'ajoute, ne supprime et ne modifie aucun endpoint API.
+# Aucun appel REST/GraphQL n'est donc à exécuter dans ce fichier.
+
