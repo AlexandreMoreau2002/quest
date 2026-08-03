@@ -58,3 +58,4 @@ VPS OVH (`51.178.37.35`, host SSH configuré en local sous `vps-ovh-projets`), *
 | Story 0.1 — Workflow projet et documentation | [root PR #1](https://github.com/AlexandreMoreau2002/quest/pull/1), API PR #1, web PR #1 | 2026-07-21 |
 | Story 1.1/1.2/1.3 + Design system (A/B/C) + i18n | [API PR #3](https://github.com/AlexandreMoreau2002/quest-api/pull/3), [Web PR #2](https://github.com/AlexandreMoreau2002/quest-web/pull/2) | 2026-07-26 |
 | Story 1.5/1.6 — Graphe unifié Space/Node/Edge | [API PR #4](https://github.com/AlexandreMoreau2002/quest-api/pull/4), [Web PR #3](https://github.com/AlexandreMoreau2002/quest-web/pull/3) | 2026-07-30 |
+| Fix — direction d'arête grow-a-branch + lien en mode local | [Web PR #4](https://github.com/AlexandreMoreau2002/quest-web/pull/4) | 2026-08-03 |
